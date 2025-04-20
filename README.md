@@ -148,4 +148,4 @@ Meta arguments
 
 version constrains
  * we can install specific version of the plugin we can use terraform block in the configuration file
- *  
+
