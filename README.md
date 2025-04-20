@@ -112,3 +112,40 @@ Terraform state
    * Tracking metadata - required while deleting data
    * Performance - terraform plan --refresh=false
    * collaboration b/w teams
+ 
+Terraform commands
+ * terraform validate - to check syntax
+ * terraform fmt - change the format for more readable
+ * terraform show - show current state of the resource
+ * terraform show -j - in json format
+ * terraform providers - providers used in the configuration directory
+ * terraform providers mirror /etc/file - mirror the provider configuration in new file
+ * terraform output - for output
+ * terraform apply -refresh-only
+ * terraform graph - to view the configuration in graph format
+
+Mutable and immutable infrastructure
+ * Mutabe infrastructure - Existing infrastructure remains but we can do changes like s/w upgrades etc
+ * Configuration drift - upgrade can fail for few servers and versions can differ in different servers
+ * Immutable infrastructure - configuration drift can be avoided, delete the resource and create it with new configs
+
+Lifecycle rules 
+lifecycle{
+   create_before_destroy = true
+}
+ * resource will be created before deletion
+ * prevent_destroy = true - resources will not be deletion after the config updates
+ * ignore_changes - ignore changes to resource attributes
+
+Data sources
+ * Allows terraform to read attributes created outside the terraform
+![image](https://github.com/user-attachments/assets/4ffa7eb2-7262-4112-9aef-b31390fc4c86)
+
+Meta arguments
+ * count - creates number of resources mentioned as count - resources are created in list type
+ * length function - calculate the size of the list
+ * for_each - resources are created in map type
+
+version constrains
+ * we can install specific version of the plugin we can use terraform block in the configuration file
+ *  
