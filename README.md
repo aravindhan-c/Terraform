@@ -149,3 +149,22 @@ Meta arguments
 version constrains
  * we can install specific version of the plugin we can use terraform block in the configuration file
 
+Remote state
+ * uses of state file
+    * mapping configurations to the real world
+    * Tracking metadata
+    * Performance
+    * Collaboration
+  * terraform state lock protects the configuration file from multiple operations at the same time thereby putting the state locks
+  * terraform state file is stored in remote state backend
+  * we can configure terraform backend with s3 bucket for state file storage and dynamo db for locks storage
+
+Terraform state commands
+ * allows to list, pull and manipulate the state files
+ * terraform state list [options] [address]
+ * terraform state list aws.s3.bucket.finance-22020922
+ * terraform state show aws.s3.bucket.finance-22020922
+ * terraform state mv aws_dynamodb_table.state-locking aws_dynamodb_table.state-locking-table
+ * terraform state pull
+ * terraform state rm aws_se_bucket.finance-2020922 - resource removed from state files are not actual destroyed in real world
+ * 
