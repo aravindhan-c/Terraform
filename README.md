@@ -190,6 +190,48 @@ Terrafom provisioners
   * $ export TF_LOG_PATH - /temp/terraform.log
   * $ unseT TF_LOG
 
+Terraform import
+   * terraform import <resource_type>.<resource.name> <attributes>
+   * while running first time we will get error as it update the state file not the config file
+   * write a empty resource block for the above resource in main.tf and then import
+
+Terraform modules
+ * modules allows to create resources in multiple directories with the single configuration directory.
+ * module "dev-webserver"{
+    source = "../aws-instance/"
+    key = "webserver"
+   }
+ * module "iam_iam-user" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-user"
+  version = "5.28.0"
+  # insert the 1 required variable here
+  name = "max"
+  create_iam_access_key = false
+  create_iam_user_login_profile = false
+}
+ * importing modules from registry
+   * terraform module contains both provider plugins & modules
+   * verified modules
+   * community modules
+   * terraform get - to download only the modules from the registry
   
-  
+Terraform function
+ * terraform console - interactive console - provided by terraform - we can use it to test functions
+ * Numeric functions - max(), min(), max(var.num...) - expansion symbol to use variable as argument in function, ceil(), floor()
  
+<img width="853" alt="image" src="https://github.com/user-attachments/assets/94e8a948-8c32-45b5-b271-c48212989ac6" />
+
+ * String function - split(), lower(), upper(), title(), substr(), join()
+<img width="708" alt="image" src="https://github.com/user-attachments/assets/e799094c-314a-49d7-b145-33e0bd00e081" />
+
+ * Collection functions - length(), index(), element(), contains()
+<img width="548" alt="image" src="https://github.com/user-attachments/assets/d76b742c-8a03-4a04-889d-b96e0200901e" />
+
+  * Map fuctions - keys(), values(), lookup()
+<img width="545" alt="image" src="https://github.com/user-attachments/assets/6e3db576-4b54-4261-9ecd-d7966a4e8e23" />
+
+Operators & conditional expressions
+ * In terraform console we can also perform mathematical operations
+ * Operators - arithmetic, eqality, comparison, logical
+ * Conditional expression - condition ? true_val : false_val
+ * 
