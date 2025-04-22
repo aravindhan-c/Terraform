@@ -167,4 +167,29 @@ Terraform state commands
  * terraform state mv aws_dynamodb_table.state-locking aws_dynamodb_table.state-locking-table
  * terraform state pull
  * terraform state rm aws_se_bucket.finance-2020922 - resource removed from state files are not actual destroyed in real world
- * 
+
+Terrafom provisioners
+ * Provisioner contains set of scripts or command that run while creating or destruction of resources
+ * remote-exec
+ * local-exec
+ * creation-time provisioner
+ * destroy-time provisioner
+ * Failure behaviour - if the provisioner fails by default the terraform apply command will also fail. to overcome this we can use on_fial = continue in the provisioner so the terraform will mark the resource block for the provision as tainted and apply will run successfully
+ * Best practice - avoid using provisioner instead use user_date. Instead user_data we can use the ami with required s/w. It the built-in ami doesn't have those s/w use custom ami or ami packager
+
+
+ Terraform taint
+  * using taint we can forcefully destroy and re-create a resource even there is no infrastructure change during the next terraform apply command
+  * terraform taint aws_instance.webserver
+  * terraform untaint aws_instance.webserver
+
+  Terraform debugging
+  * log levels - info, warning, error, debug, trace
+  * we can set env. variable for logging
+  * $ export TF_LOG = TRACE
+  * $ export TF_LOG_PATH - /temp/terraform.log
+  * $ unseT TF_LOG
+
+  
+  
+ 
