@@ -234,4 +234,8 @@ Operators & conditional expressions
  * In terraform console we can also perform mathematical operations
  * Operators - arithmetic, eqality, comparison, logical
  * Conditional expression - condition ? true_val : false_val
- * 
+
+Terraform workspace
+ * terraform workspace new projectA
+ * terraform workspace list
+ * terraform workspace select projectB
