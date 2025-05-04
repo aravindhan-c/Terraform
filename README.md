@@ -72,9 +72,10 @@ Terraform providers
 Configuration directory
   * single configuration file is recommended
   * main.tf - main configuration file containing the resource definition
+  * providers.tf - contains provider definition
   * variables.tf - contains variables declarations
   * outputs.tf - contains outputs from resources
-  * providers.tf - contains provider definition
+  * terraform.tfvars - is used for providing values to the variables during runtime
 
 
 Terrafrom input variables
@@ -231,9 +232,11 @@ Terraform function
 <img width="545" alt="image" src="https://github.com/user-attachments/assets/6e3db576-4b54-4261-9ecd-d7966a4e8e23" />
 
 Operators & conditional expressions
+
  * In terraform console we can also perform mathematical operations
  * Operators - arithmetic, eqality, comparison, logical
  * Conditional expression - condition ? true_val : false_val
+![image](https://github.com/user-attachments/assets/a78975d8-bfbc-41e7-a295-d8e5ae08e7b5)
 
 Terraform workspace
  * terraform workspace new projectA
