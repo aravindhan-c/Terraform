@@ -106,7 +106,7 @@ value = "variable expression"}
 
 Terraform state
 
-* When we run terrafom apply it will create the terrafom.tfstate file containing all the details about the provisioned infrastructure
+* When we run terrafom apply it will create the terraform.tfstate file containing all the details about the provisioned infrastructure
 * It is a non-optional feature
 * Data in terraform.tfstate file is made of plain json format
 * Purpose
@@ -117,7 +117,7 @@ Terraform state
 Terraform commands
  * terraform validate - to check syntax
  * terraform fmt - change the format for more readable
- * terraform show - show current state of the resource
+ * terraform show - reading the state file / show current state of the resource
  * terraform show -j - in json format
  * terraform providers - providers used in the configuration directory
  * terraform providers mirror /etc/file - mirror the provider configuration in new file
@@ -158,7 +158,8 @@ Remote state
     * Collaboration
   * terraform state lock protects the configuration file from multiple operations at the same time thereby putting the state locks
   * terraform state file is stored in remote state backend
-  * we can configure terraform backend with s3 bucket for state file storage and dynamo db for locks storage
+  * we can configure terraform backend with **s3 bucket for state file storage and dynamo db for locks storage**
+  * Terraform init will first initiate the remote backend, initiate modules, initiate plugins
 
 Terraform state commands
  * allows to list, pull and manipulate the state files
@@ -170,16 +171,17 @@ Terraform state commands
  * terraform state rm aws_se_bucket.finance-2020922 - resource removed from state files are not actual destroyed in real world
 
 Terrafom provisioners
+ * Using provisioners we can deploy applications while creating the infrastructure
  * Provisioner contains set of scripts or command that run while creating or destruction of resources
- * remote-exec
- * local-exec
+ * file provisioner - copy files from local to remote
+ * remote-exec - 
+ * local-exec - we can tell the terraform to copy all the output to a local file
  * creation-time provisioner
  * destroy-time provisioner
  * Failure behaviour - if the provisioner fails by default the terraform apply command will also fail. to overcome this we can use on_fial = continue in the provisioner so the terraform will mark the resource block for the provision as tainted and apply will run successfully
  * Best practice - avoid using provisioner instead use user_date. Instead user_data we can use the ami with required s/w. It the built-in ami doesn't have those s/w use custom ami or ami packager
 
-
- Terraform taint
+Terraform taint
   * using taint we can forcefully destroy and re-create a resource even there is no infrastructure change during the next terraform apply command
   * terraform taint aws_instance.webserver
   * terraform untaint aws_instance.webserver
@@ -239,6 +241,23 @@ Operators & conditional expressions
 ![image](https://github.com/user-attachments/assets/a78975d8-bfbc-41e7-a295-d8e5ae08e7b5)
 
 Terraform workspace
- * terraform workspace new projectA
+ * without workspace the statefile will get updated for each environment
+ * workspaces create statefile per environment
+ * terraform workspace new dev
+ * terraform workspace new stage
+ * terraform workspace new prod
+![image](https://github.com/user-attachments/assets/09ad126d-25ff-426e-9ecc-0c1ed1d4f75f)
+
  * terraform workspace list
- * terraform workspace select projectB
+ * terraform workspace select dev
+
+Terraform vault
+ * secret management for terraform & ansible
+ * vault is a package available in hashicorp
+ * install hashicorp vault in a ec2 instance
+ * connect to the vault
+ * create secret engine
+ * secret engines - different types of secrets that we store in hashicorp vault like k8s, KV (key value pair), etc.,
+ * Access - like IAM role - Approle most commonly used - 
+ * Policies - like IAM policy
+ * Access and policies cann't be created via vault UI
