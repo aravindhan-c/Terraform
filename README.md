@@ -1,4 +1,4 @@
-# Terraform
+# Terraform - Study guide
 Terraform
 
 Challenges with traditional IT infrastructure
