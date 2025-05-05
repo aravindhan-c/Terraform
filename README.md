@@ -261,3 +261,22 @@ Terraform vault
  * Access - like IAM role - Approle most commonly used - 
  * Policies - like IAM policy
  * Access and policies cann't be created via vault UI
+
+Secnarios:
+ 1. Migrating existing resources on terraform -refer notes
+ 2. Drift detection - refer notes
+
+Terraform pojects:
+
+Pre-requisites
+ * AWS IAM user with required permissions to create resources
+ * Generate access keys
+ * Configure aws in CLI
+
+Best practices:
+ * Try to use separate files
+ * Use modules - first check if we have inbuilt modules
+ * 
+
+
+
